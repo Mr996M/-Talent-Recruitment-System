@@ -7,3 +7,4 @@
 https://nm6lpus0jy.feishu.cn/sheets/shtcncDne60bYXmrcwSAclRe4bh
 
 ## 2023/4/14：今日通过组内讨论，建立了会议纪要与进度文档子目录，并在两个目录下重新上传了前几周实验编写的相应文档
+## 4/14 10:18删除了根目录下的各会议纪要.doc与进度.txt，并在新建的目录下重新进行了Upload
