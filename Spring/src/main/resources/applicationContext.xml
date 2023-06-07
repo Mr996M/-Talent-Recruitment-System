@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- 创建数据源对象 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	<bean id="dds" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="username" value="${uname}" />
+		<property name="password" value="${upwd}" />
+		<property name="url" value="${url}" />
+		<property name="driverClassName" value="${drvierClass}" />
+	</bean>
+	
+	<!-- 扫描dao和service所在包 -->
+	<context:component-scan base-package="com.zuxia.dao" />
+	<context:component-scan base-package="com.zuxia.service" />
+	
+	<!-- 声明式事务管理 -->
+	<bean id="dstm" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dds" />
+	</bean>
+	<tx:annotation-driven transaction-manager="dstm"/>
+</beans>
